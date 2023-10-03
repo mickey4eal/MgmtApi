@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SoapUIRequestTemplate" xml:space="preserve">
+    <value>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://christies.perfectchannel.com/2017/01/ManagementAPI/" xmlns:sale="http://christies.perfectchannel.com/2017/01/ManagementAPI/Sale/" xmlns:sys="http://schemas.datacontract.org/2004/07/System"&gt;
+	&lt;soapenv:Header/&gt;
+	&lt;soapenv:Body&gt;
+		&lt;man:SaleCreateOrUpdate&gt;
+			&lt;man:request&gt;
+				
+				&lt;sale:AnalyticsSaleType&gt;{16}&lt;/sale:AnalyticsSaleType&gt;
+				&lt;sale:ApplicationCorrelationId&gt;b5954a0d-8115-49ae-99da-ead4c17577c7&lt;/sale:ApplicationCorrelationId&gt;
+				&lt;sale:BidIncrementSet&gt;{10}&lt;/sale:BidIncrementSet&gt;
+				&lt;sale:BondedDeliveryDisabled&gt;{11}&lt;/sale:BondedDeliveryDisabled&gt;
+					&lt;sale:BuyersPremiumOverride&gt;{12}&lt;/sale:BuyersPremiumOverride&gt;
+				&lt;sale:CompanyCode&gt;{13}&lt;/sale:CompanyCode&gt;
+				&lt;sale:Currency&gt;{14}&lt;/sale:Currency&gt;
+				&lt;sale:DefaultCreditLimit&gt;{15}&lt;/sale:DefaultCreditLimit&gt;
+				
+				&lt;sale:ExplicitContent&gt;0&lt;/sale:ExplicitContent&gt;
+				
+				&lt;sale:GeoRestrictionAttributes&gt;
+					&lt;sale:GeoRestrictionAttribute&gt;
+					  &lt;sale:Value&gt;{23}&lt;/sale:Value&gt;
+					&lt;/sale:GeoRestrictionAttribute&gt;
+				&lt;/sale:GeoRestrictionAttributes&gt;
+				&lt;sale:KYCMandatoryFlag&gt;{9}&lt;/sale:KYCMandatoryFlag&gt;
+				&lt;sale:LotTimeInterval&gt;{8}&lt;/sale:LotTimeInterval&gt;
+				&lt;sale:SaleCoordinatorEmailSignature&gt;{7}&lt;/sale:SaleCoordinatorEmailSignature&gt;
+				&lt;sale:SaleEmail&gt;{5}&lt;/sale:SaleEmail&gt;
+				&lt;sale:SaleHasInBondLots&gt;{6}&lt;/sale:SaleHasInBondLots&gt;
+				&lt;sale:SaleName&gt;{0}&lt;/sale:SaleName&gt;
+				&lt;sale:SaleNumber&gt;{1}&lt;/sale:SaleNumber&gt;
+				&lt;sale:SaleStatus&gt;{2}&lt;/sale:SaleStatus&gt;
+				&lt;sale:SaleType&gt;{3}&lt;/sale:SaleType&gt;
+				&lt;sale:SalesTaxExemptionEnabled&gt;{4}&lt;/sale:SalesTaxExemptionEnabled&gt;
+				
+				&lt;sale:Sessions&gt;
+					
+					&lt;sale:Session&gt;
+					
+						&lt;sale:SessionStart&gt;
+							&lt;sys:DateTime&gt;{19}&lt;/sys:DateTime&gt;
+							&lt;sys:OffsetMinutes&gt;{22}&lt;/sys:OffsetMinutes&gt;
+						&lt;/sale:SessionStart&gt;
+					
+						&lt;sale:SessionEnd&gt;
+							&lt;sys:DateTime&gt;{20}&lt;/sys:DateTime&gt;
+							&lt;sys:OffsetMinutes&gt;{22}&lt;/sys:OffsetMinutes&gt;
+						&lt;/sale:SessionEnd&gt;	
+						
+					&lt;/sale:Session&gt;                  
+					
+				&lt;/sale:Sessions&gt;
+				
+				&lt;sale:ShippingConfigurationType&gt;{22}&lt;/sale:ShippingConfigurationType&gt;
+				
+				&lt;sale:Starts&gt;
+				  &lt;sys:DateTime&gt;{17}&lt;/sys:DateTime&gt;
+				  &lt;sys:OffsetMinutes&gt;{22}&lt;/sys:OffsetMinutes&gt;
+				&lt;/sale:Starts&gt;
+				
+				&lt;sale:Ends&gt;
+					&lt;sys:DateTime&gt;{18}&lt;/sys:DateTime&gt;
+					&lt;sys:OffsetMinutes&gt;{22}&lt;/sys:OffsetMinutes&gt;
+				&lt;/sale:Ends&gt;
+				
+				&lt;sale:Translations&gt;
+				  &lt;sale:SaleTranslation&gt;
+					 &lt;sale:LanguageCode&gt;en-US&lt;/sale:LanguageCode&gt;
+					 &lt;sale:Title&gt;{0}&lt;/sale:Title&gt;
+				  &lt;/sale:SaleTranslation&gt;
+				&lt;/sale:Translations&gt;
+				
+				&lt;sale:WarehouseTransferDisabled&gt;0&lt;/sale:WarehouseTransferDisabled&gt;
+				
+			&lt;/man:request&gt;
+		&lt;/man:SaleCreateOrUpdate&gt;
+	&lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</value>
+    <comment>{0}: SaleName
+{1}: SaleNumber
+{2}: SaleStatus
+{3}: SaleType
+{4}: SalesTaxExemptionEnabled
+{5}: SaleEmail
+{6}: SaleHasInBondLots
+{7}: SaleCoordinatorEmailSignature
+{8}: LotTimeInterval
+{9}: KYCMandatoryFlag
+{10}: BidIncrementSet
+{11}: BondedDeliveryDisabled
+{12}: BuyersPremiumOverride
+{13}: CompanyCode
+{14}: Currency
+{15}: DefaultCreditLimit
+{16}: AnalyticsSaleType
+{17}: Sale Start Time
+{18}: Sale End Time
+{19}: Session Start Time
+{20}: Session End Time
+{21}: ShippingConfigurationType
+{22}: DateTime OffsetMinutes
+{23}: GeoRestrictionAttribute</comment>
+  </data>
+</root>
