@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.34031.81
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagementApi", "ManagementApi.csproj", "{76F7913A-6403-4DD2-A6F5-279DC3F70AF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementApiTests", "..\ManagementApiTests\ManagementApiTests.csproj", "{B19BE899-3420-438A-A60A-4783D8A27BCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{76F7913A-6403-4DD2-A6F5-279DC3F70AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76F7913A-6403-4DD2-A6F5-279DC3F70AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76F7913A-6403-4DD2-A6F5-279DC3F70AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B19BE899-3420-438A-A60A-4783D8A27BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B19BE899-3420-438A-A60A-4783D8A27BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B19BE899-3420-438A-A60A-4783D8A27BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B19BE899-3420-438A-A60A-4783D8A27BCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
