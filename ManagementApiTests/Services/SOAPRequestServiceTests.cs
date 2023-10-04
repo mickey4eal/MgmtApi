@@ -1,26 +1,24 @@
 ﻿namespace ManagementApiTests.Services
 {
-    using AutoFixture;
     using AutoFixture.Kernel;
     using ManagementApi.Services;
     using ManagementApi.Services.Interfaces;
 
-    public class SOAPRequestServiceTests
+    public class SOAPRequestServiceTests : TestBase
     {
         private readonly ISOAPRequestService _iSOAPRequestService;
 
         public SOAPRequestServiceTests()
         {
-            var fixture = new Fixture();
-            fixture.Customizations.Add(
+            _fixture.Customizations.Add(
                 new TypeRelay(
                     typeof(IAuctionEventService),
                     typeof(AuctionEventService)));
-            fixture.Customizations.Add(
+            _fixture.Customizations.Add(
                 new TypeRelay(
                     typeof(ISOAPRequestService),
                     typeof(SOAPRequestService)));
-            _iSOAPRequestService = fixture.Create<ISOAPRequestService>();
+            _iSOAPRequestService = _fixture.Create<ISOAPRequestService>();
         }
 
         [Theory]

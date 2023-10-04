@@ -1,6 +1,5 @@
 ﻿namespace ManagementApiTests.Helpers
 {
-    using AutoFixture;
     using ManagementApi.Helpers;
     using ManagementApi.Responses;
 

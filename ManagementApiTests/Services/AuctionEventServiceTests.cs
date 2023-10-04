@@ -1,22 +1,20 @@
 using AutoFixture.Kernel;
-using AutoFixture;
 using ManagementApi.Services;
 using ManagementApi.Services.Interfaces;
 
 namespace ManagementApiTests.Services
 {
-    public class AuctionEventServiceTests
+    public class AuctionEventServiceTests : TestBase
     {
         private readonly IAuctionEventService _auctionEventService;
 
-        public AuctionEventServiceTests() 
+        public AuctionEventServiceTests()
         {
-            var fixture = new Fixture();
-            fixture.Customizations.Add(
+            _fixture.Customizations.Add(
                 new TypeRelay(
                     typeof(IAuctionEventService),
                     typeof(AuctionEventService)));
-            _auctionEventService = fixture.Create<IAuctionEventService>();
+            _auctionEventService = _fixture.Create<IAuctionEventService>();
         }
 
         [Theory]
