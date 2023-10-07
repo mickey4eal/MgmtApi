@@ -2,7 +2,7 @@
 {
     public abstract class TestBase
     {
-        protected Fixture _fixture;
+        protected IFixture _fixture;
 
         protected TestBase()
         {
