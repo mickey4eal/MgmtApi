@@ -55,9 +55,9 @@
             {
                 AuctionEventsResponse? auctionEventsResponse;
 
-                using (var connection = _sqlConnectionWrapper)
+                using (_sqlConnectionWrapper)
                 {
-                    auctionEventsResponse = await connection.QuerySingleOrDefaultAsync<AuctionEventsResponse?>(CreateGetAuctionEventDetailsCommand(), new
+                    auctionEventsResponse = await _sqlConnectionWrapper.QuerySingleOrDefaultAsync<AuctionEventsResponse?>(CreateGetAuctionEventDetailsCommand(), new
                     {
                         SaleId = saleId
                     });
