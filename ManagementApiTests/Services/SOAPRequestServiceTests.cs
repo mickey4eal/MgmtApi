@@ -1,26 +1,39 @@
 ﻿namespace ManagementApiTests.Services
 {
-    using AutoFixture;
-    using AutoFixture.Kernel;
+    using ManagementApi.Helpers;
+    using ManagementApi.Responses;
     using ManagementApi.Services;
     using ManagementApi.Services.Interfaces;
+    using Moq;
 
-    public class SOAPRequestServiceTests
+    public class SOAPRequestServiceTests : TestBase
     {
-        private readonly ISOAPRequestService _iSOAPRequestService;
+        private readonly Mock<IAuctionEventService> _auctionEventServiceMock;
+        private readonly SOAPRequestService _soapRequestService;
 
         public SOAPRequestServiceTests()
         {
-            var fixture = new Fixture();
-            fixture.Customizations.Add(
-                new TypeRelay(
-                    typeof(IAuctionEventService),
-                    typeof(AuctionEventService)));
-            fixture.Customizations.Add(
-                new TypeRelay(
-                    typeof(ISOAPRequestService),
-                    typeof(SOAPRequestService)));
-            _iSOAPRequestService = fixture.Create<ISOAPRequestService>();
+            _auctionEventServiceMock = new Mock<IAuctionEventService>();
+            _soapRequestService = new SOAPRequestService(_auctionEventServiceMock.Object);
+        }
+
+        [Theory]
+        [InlineData("1234")]
+        [InlineData("2345")]
+        private async void Should_Return_Message_When_SaleId_Is_Valid(string saleId)
+        {
+            // Arrange
+            var expectedAuctionEventDetails = _fixture.Create<AuctionEventsResponse>();
+            _auctionEventServiceMock
+                .Setup(s => s.GetAuctionEventDetails(It.IsAny<int?>()))
+                .ReturnsAsync(expectedAuctionEventDetails);
+
+            // Act
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale(saleId);
+
+            // Assert
+            Assert.False(string.IsNullOrEmpty(actualSOAPRequest));
+            Assert.Contains(SOAPRequestHelper.GenerateSOAPRequest(expectedAuctionEventDetails), actualSOAPRequest);
         }
 
         [Theory]
@@ -35,26 +48,45 @@
         private async void Should_Return_Error_Message_When_SaleId_Is_Not_Valid(string? saleId)
         {
             // Arrange
-            var expectedResult = $"SaleId {saleId} is not valid. Please enter a valid SaleId.";
+            var expectedErrorMessage = $"SaleId {saleId} is not valid. Please enter a valid SaleId.";
 
             // Act
-            var actualResult = await _iSOAPRequestService.CreateSOAPRequestForSale(saleId);
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale(saleId);
 
             // Assert
-            Assert.Equal(expectedResult, actualResult);
+            Assert.Equal(expectedErrorMessage, actualSOAPRequest);
         }
 
-        [Theory]
-        [InlineData("1234")]
-        [InlineData("2345")]
-        private async void Should_Return_Message_When_SaleId_Is_Valid(string saleId)
+        [Fact]
+        public async Task CreateSOAPRequestForSale_ShouldReturnErrorMessage_WhenSaleIdIsNotFound()
         {
+            // Arrange
+            _auctionEventServiceMock
+                .Setup(s => s.GetAuctionEventDetails(It.IsAny<int?>()))
+                .ReturnsAsync((AuctionEventsResponse?)null);
+
+            var expectedErrorMessage = "SaleId 123 is not valid. Please enter a valid SaleId.";
+
             // Act
-            var result = await _iSOAPRequestService.CreateSOAPRequestForSale(saleId);
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale("123");
 
             // Assert
-            Assert.NotNull(result);
-            Assert.False(string.IsNullOrEmpty(result));
+            Assert.Equal(expectedErrorMessage, actualSOAPRequest);
+        }
+
+        [Fact]
+        public async Task CreateSOAPRequestForSale_ShouldThrowException_WhenExceptionOccurs()
+        {
+            // Arrange
+            _auctionEventServiceMock
+                .Setup(s => s.GetAuctionEventDetails(It.IsAny<int?>()))
+                .ThrowsAsync(new Exception());
+
+            // Act
+            var action = async () => await _soapRequestService.CreateSOAPRequestForSale("1234");
+
+            // Assert
+            await Assert.ThrowsAsync<Exception>(action);
         }
     }
 }

@@ -1,14 +1,12 @@
 ﻿namespace ManagementApi.Services
 {
-    using Dapper;
     using ManagementApi.Responses;
     using ManagementApi.Services.Interfaces;
-    using System.Data.SqlClient;
 
     public class AuctionEventService : IAuctionEventService
     {
-        private readonly string _connectionString; 
-        private const string CONNECTION_STRING = "connectionString";
+        private readonly ISqlConnectionWrapper _sqlConnectionWrapper;
+
         private const string AUCTION_DETAILS_QUERY = @"SELECT
       [SaleName]
 	  ,[SaleNumber]
@@ -46,27 +44,30 @@
   Join [dbo].[BidIncrementSets] bis ON ae.[BidIncrementSetId] = bis.[Id]
   Where ae.[Id] = @SaleId";
 
-        public AuctionEventService()
+        public AuctionEventService(ISqlConnectionWrapper sqlConnectionWrapper)
         {
-            _connectionString = CONNECTION_STRING;
+            _sqlConnectionWrapper = sqlConnectionWrapper;
         }
 
         public async Task<AuctionEventsResponse?> GetAuctionEventDetails(int? saleId)
         {
             try
             {
-                using var conn = new SqlConnection(_connectionString);
+                AuctionEventsResponse? auctionEventsResponse;
 
-                var auctionEventDetails = await conn.QuerySingleOrDefaultAsync<AuctionEventsResponse>(CreateGetAuctionEventDetailsCommand(), new
+                using (var connection = _sqlConnectionWrapper)
                 {
-                    SaleId = saleId
-                });
+                    auctionEventsResponse = await connection.QuerySingleOrDefaultAsync<AuctionEventsResponse?>(CreateGetAuctionEventDetailsCommand(), new
+                    {
+                        SaleId = saleId
+                    });
+                }
 
-                return auctionEventDetails;
+                return auctionEventsResponse;
             }
             catch (Exception)
             {
-                return null;
+                throw;
             }
         }
 

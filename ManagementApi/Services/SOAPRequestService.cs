@@ -1,9 +1,9 @@
 ﻿namespace ManagementApi.Services
 {
-    using System.Linq;
     using ManagementApi.Helpers;
     using ManagementApi.Responses;
     using ManagementApi.Services.Interfaces;
+    using System.Linq;
 
     public class SOAPRequestService : ISOAPRequestService
     {
