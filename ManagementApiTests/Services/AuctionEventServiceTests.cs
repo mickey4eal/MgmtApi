@@ -78,18 +78,26 @@ namespace ManagementApiTests.Services
         }
 
         [Fact]
-        public async Task GetAuctionEventDetails_Should_Throw_Exception_When_Exception_Occurs()
+        public async Task GetAuctionEventDetails_Should_Log_Exception_When_Exception_Occurs()
         {
             // Arrange
+            AuctionEventsResponse? actualAuctionEventDetails;
+            var expectedSubString = "Exception caught!";
             _sqlConnectionWrapperMock
                 .Setup(c => c.QuerySingleOrDefaultAsync<AuctionEventsResponse?>(It.IsAny<string>(), It.IsAny<object>()))
                 .ThrowsAsync(new Exception());
 
-            // Act
-            var action = async () => await _auctionEventService.GetAuctionEventDetails(123);
+            var consoleOutput = new TestConsoleOutput();
+            using (consoleOutput)
+            {
+                // Act
+                actualAuctionEventDetails = await _auctionEventService.GetAuctionEventDetails(1234);
+            }
+            var actualString = consoleOutput.GetOutput();
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(action);
+            Assert.Null(actualAuctionEventDetails);
+            Assert.Contains(expectedSubString, actualString);
         }
     }
 }
