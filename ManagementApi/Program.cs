@@ -4,6 +4,7 @@ using ManagementApi.Models;
 
 Console.WriteLine("SOAP Request Generator Started\nPlease enter a valid SaleId to Generator Management API Request Template for Sale\nTo End Process, Enter Exit or Ex");
 var shouldProgramRun = true;
+const string connectionString = "Trusted_Connection=True;";
 do
 {
     var consoleInput = Console.ReadLine();
@@ -14,7 +15,7 @@ do
     }
     else
     {
-        var request = new SOAPRequestServiceRequest() { ConnectionString = "Trusted_Connection=True;" };
+        var request = new SOAPRequestServiceRequest() { ConnectionString = connectionString };
         var factory = new SOAPRequestServiceFactory();
         var soapRequestService = factory.Create(request);
         var result = await soapRequestService.CreateSOAPRequestForSale(consoleInput);

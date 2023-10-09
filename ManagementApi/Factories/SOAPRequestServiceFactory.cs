@@ -9,11 +9,22 @@
     {
         public SOAPRequestService Create(SOAPRequestServiceRequest sOAPRequestServiceRequest)
         {
-            var connectionString = sOAPRequestServiceRequest?.ConnectionString;
-            var wrapper = new SqlConnectionWrapper(new SqlConnection(connectionString));
-            var auctionEventService = new AuctionEventService(wrapper);
+            try
+            
+            {
+                var connectionString = sOAPRequestServiceRequest?.ConnectionString;
+                if (string.IsNullOrWhiteSpace(connectionString))
+                    throw new ArgumentNullException();
 
-            return new SOAPRequestService(auctionEventService);
+                var wrapper = new SqlConnectionWrapper(new SqlConnection(connectionString));
+                var auctionEventService = new AuctionEventService(wrapper);
+                return new SOAPRequestService(auctionEventService);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception caught! {ex}");
+                throw;
+            }
         }
     }
 }

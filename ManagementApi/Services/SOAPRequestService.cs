@@ -28,7 +28,7 @@
             }
 
             return response == null
-                ? $"Sale with SaleId {saleId} Not Found."
+                ? $"No Response for Request with SaleId {saleId}.\nPlease try again with a valid SaleId."
                 : SOAPRequestHelper.GenerateSOAPRequest(response);
         }
 

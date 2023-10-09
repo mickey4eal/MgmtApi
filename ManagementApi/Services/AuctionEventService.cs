@@ -65,9 +65,10 @@
 
                 return auctionEventsResponse;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine($"Exception caught! {ex}\n");
+                return null;
             }
         }
 

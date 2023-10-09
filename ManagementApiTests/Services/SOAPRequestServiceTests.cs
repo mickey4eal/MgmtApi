@@ -58,7 +58,7 @@
         }
 
         [Fact]
-        public async Task CreateSOAPRequestForSale_ShouldReturnErrorMessage_WhenSaleIdIsNotFound()
+        public async Task Create_SOAP_Request_For_Sale_Should_Return_ErrorMessage_When_SaleId_Is_Not_Found()
         {
             // Arrange
             _auctionEventServiceMock
@@ -74,8 +74,26 @@
             Assert.Equal(expectedErrorMessage, actualSOAPRequest);
         }
 
+        [Theory]
+        [InlineData("1234")]
+        public async Task Create_SOAP_Request_For_Sale_Should_Return_ErrorMessage_When_SaleId_Is_Valid_But_Response_Is_Null(string saleId)
+        {
+            // Arrange
+            _auctionEventServiceMock
+                .Setup(s => s.GetAuctionEventDetails(It.IsAny<int?>()))
+                .ReturnsAsync((AuctionEventsResponse?)null);
+
+            var expectedErrorMessage = $"No Response for Request with SaleId {saleId}.\nPlease try again with a valid SaleId.";
+
+            // Act
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale(saleId);
+
+            // Assert
+            Assert.Equal(expectedErrorMessage, actualSOAPRequest);
+        }
+
         [Fact]
-        public async Task CreateSOAPRequestForSale_ShouldThrowException_WhenExceptionOccurs()
+        public async Task Create_SOAP_Request_For_Sale_Should_Throw_Exception_When_Exception_Occurs()
         {
             // Arrange
             _auctionEventServiceMock
