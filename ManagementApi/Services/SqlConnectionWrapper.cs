@@ -13,11 +13,21 @@
             _sqlConnection = sqlConnection;
         }
 
+        /// <summary>
+        /// Releases all resources used by <see cref='System.ComponentModel.Component'/>.
+        /// </summary>
         public void Dispose()
         {
             _sqlConnection.Dispose();
         }
 
+        /// <summary>
+        /// Execute a single-row query asynchronously using Task.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns><see cref='T?'/></returns>
         public async Task<T?> QuerySingleOrDefaultAsync<T>(string sql, object parameters)
         {
             return await _sqlConnection.QuerySingleOrDefaultAsync<T>(sql, parameters);
