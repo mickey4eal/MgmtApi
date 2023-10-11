@@ -9,8 +9,7 @@
     {
         public SOAPRequestService Create(SOAPRequestServiceRequest sOAPRequestServiceRequest)
         {
-            try
-            
+            try            
             {
                 var connectionString = sOAPRequestServiceRequest?.ConnectionString;
                 if (string.IsNullOrWhiteSpace(connectionString))

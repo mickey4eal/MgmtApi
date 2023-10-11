@@ -4,6 +4,11 @@
 
     public static class SOAPRequestHelper
     {
+        /// <summary>
+        /// Creates the SOAP Request from the auction event response.
+        /// </summary>
+        /// <param name="auctionEventsResponse"></param>
+        /// <returns>The SOAP Request as a <see cref='string'/></returns>
         public static string GenerateSOAPRequest(AuctionEventsResponse auctionEventsResponse)
         {
             return FormatSoapUITemplateWithAuctionEventsResponse(auctionEventsResponse);
