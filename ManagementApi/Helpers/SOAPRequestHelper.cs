@@ -45,6 +45,10 @@
                     , auctionEventsResponse.GeoRestrictionAttribute)
                 : string.Empty;
 
-        private static string FormatDateTimeString(DateTime dateTime) => dateTime.ToString().Replace(" ", "T");
+        private static string FormatDateTimeString(DateTime dateTime) => dateTime.ToString("yyyy-MM-ddTHH:mm:ss");
+
+        private static string FormatEmailSignature(string? emailSignature) => emailSignature != null
+                                                                            ? emailSignature.Replace("<br>", "&lt;br&gt;")
+                                                                            : string.Empty;
     }
 }
