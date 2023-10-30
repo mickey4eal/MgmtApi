@@ -20,7 +20,7 @@
 
             if (IsValidSaleId(saleId))
             {
-                response = await _auctionEventService.GetAuctionEventDetails(int.Parse(saleId!));
+                response = await _auctionEventService.GetAuctionEventDetailsRouteTwo(int.Parse(saleId!));
             }
             else
             {
@@ -43,8 +43,8 @@
             numbers.AddRange(from number in saleId
                              select number);
 
-            //checking for negative numbers and saleId has 4 digits minimum
-            if (numbers.Count < 4 || numbers[0] == '-')
+            //checking for negative numbers
+            if (numbers[0] == '-')
             {
                 return false;
             }

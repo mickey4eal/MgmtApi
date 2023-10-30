@@ -28,9 +28,14 @@
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns><see cref='T?'/></returns>
-        public async Task<T?> QuerySingleOrDefaultAsync<T>(string sql, object parameters)
+        public async Task<T?> QuerySingleOrDefaultAsync<T>(string sQL, object parameters)
         {
-            return await _sqlConnection.QuerySingleOrDefaultAsync<T>(sql, parameters);
+            return await _sqlConnection.QuerySingleOrDefaultAsync<T>(sQL, parameters);
+        }
+
+        public async Task<IEnumerable<T?>> QueryAsync<T>(string sQL, object parameters)
+        {
+            return await _sqlConnection.QueryAsync<T>(sQL, parameters);
         }
     }
 }

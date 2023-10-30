@@ -11,5 +11,7 @@
         /// <returns>Returns a <see cref='AuctionEventsResponse'/>;
         /// Throws an <see cref='Exception'/> if a failure occurs during the execution.</returns>
         Task<AuctionEventsResponse?> GetAuctionEventDetails(int? saleId);
+
+        Task<AuctionEventsResponse?> GetAuctionEventDetailsRouteTwo(int? saleId);
     }
 }
