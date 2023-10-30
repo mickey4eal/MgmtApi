@@ -5,6 +5,8 @@
     public static class SOAPRequestHelper
     {
         private const string SALE_TYPE = "TimeBased";
+        private const string LOT_END_TIME_INTERVAL = "PT2M";
+
         /// <summary>
         /// Creates the SOAP Request from the auction event response.
         /// </summary>
