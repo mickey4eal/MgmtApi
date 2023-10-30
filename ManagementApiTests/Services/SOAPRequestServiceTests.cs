@@ -25,7 +25,7 @@
             // Arrange
             var expectedAuctionEventDetails = _fixture.Create<AuctionEventsResponse>();
             _auctionEventServiceMock
-                .Setup(s => s.GetAuctionEventDetails(It.IsAny<int?>()))
+                .Setup(s => s.GetAuctionEventDetailsRouteTwo(It.IsAny<int?>()))
                 .ReturnsAsync(expectedAuctionEventDetails);
 
             // Act
@@ -40,7 +40,7 @@
         [InlineData("")]
         [InlineData(null)]
         [InlineData("-45")]
-        [InlineData("123")]
+        [InlineData("-123")]
         [InlineData("123A")]
         [InlineData("sdandapd")]
         [InlineData("dmpqiej32n38hf9c4n9fbc")]
@@ -65,10 +65,10 @@
                 .Setup(s => s.GetAuctionEventDetails(It.IsAny<int?>()))
                 .ReturnsAsync((AuctionEventsResponse?)null);
 
-            var expectedErrorMessage = "SaleId 123 is not valid. Please enter a valid SaleId.";
+            var expectedErrorMessage = "SaleId -123 is not valid. Please enter a valid SaleId.";
 
             // Act
-            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale("123");
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale("-123");
 
             // Assert
             Assert.Equal(expectedErrorMessage, actualSOAPRequest);
@@ -97,7 +97,7 @@
         {
             // Arrange
             _auctionEventServiceMock
-                .Setup(s => s.GetAuctionEventDetails(It.IsAny<int?>()))
+                .Setup(s => s.GetAuctionEventDetailsRouteTwo(It.IsAny<int?>()))
                 .ThrowsAsync(new Exception());
 
             // Act
