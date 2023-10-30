@@ -169,7 +169,7 @@
 					
 				&lt;/sale:Sessions&gt;
 				
-				&lt;sale:ShippingConfigurationType&gt;{22}&lt;/sale:ShippingConfigurationType&gt;
+				&lt;sale:ShippingConfigurationType&gt;{21}&lt;/sale:ShippingConfigurationType&gt;
 				
 				&lt;sale:Starts&gt;
 				  &lt;sys:DateTime&gt;{17}&lt;/sys:DateTime&gt;

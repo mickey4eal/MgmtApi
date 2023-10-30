@@ -21,10 +21,10 @@
         public string? Currency { get; set; }
         public string? DefaultCreditLimit { get; set; }
         public string? AnalyticsSaleType { get; set; }
-        public DateTime? SaleStartTime { get; set; }
-        public DateTime? SaleEndTime { get; set; }
-        public DateTime? SessionStartTime { get; set; }
-        public DateTime? SessionEndTime { get; set; }
+        public DateTime SaleStartTime { get; set; }
+        public DateTime SaleEndTime { get; set; }
+        public DateTime SessionStartTime { get; set; }
+        public DateTime SessionEndTime { get; set; }
         public ShippingConfigurationType? ShippingConfigurationType { get; set; }
         public int? DateTimeOffsetMinutes { get; set; } = 60;
         public string? GeoRestrictionAttribute { get; set; }

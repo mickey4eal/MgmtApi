@@ -4,6 +4,9 @@
 
     public static class SOAPRequestHelper
     {
+        private const string SALE_TYPE = "TimeBased";
+        private const string LOT_END_TIME_INTERVAL = "PT2M";
+
         /// <summary>
         /// Creates the SOAP Request from the auction event response.
         /// </summary>
@@ -19,12 +22,12 @@
                     auctionEventsResponse.SaleName
                     , auctionEventsResponse.SaleNumber
                     , auctionEventsResponse.SaleStatus
-                    , auctionEventsResponse.SaleType
+                    , SALE_TYPE
                     , auctionEventsResponse.SalesTaxExemptionEnabled
                     , auctionEventsResponse.SaleEmail
                     , auctionEventsResponse.SaleHasInBondLots
-                    , auctionEventsResponse.SaleCoordinatorEmailSignature
-                    , auctionEventsResponse.LotEndTimeInterval
+                    , FormatEmailSignature(auctionEventsResponse.SaleCoordinatorEmailSignature)
+                    , LOT_END_TIME_INTERVAL
                     , auctionEventsResponse.KYCMandatory
                     , auctionEventsResponse.BidIncrementSet
                     , auctionEventsResponse.BondedDeliveryDisabled
@@ -33,13 +36,19 @@
                     , auctionEventsResponse.Currency
                     , auctionEventsResponse.DefaultCreditLimit
                     , auctionEventsResponse.AnalyticsSaleType
-                    , auctionEventsResponse.SaleStartTime
-                    , auctionEventsResponse.SaleEndTime
-                    , auctionEventsResponse.SessionStartTime
-                    , auctionEventsResponse.SessionEndTime
+                    , FormatDateTimeString(auctionEventsResponse.SaleStartTime)
+                    , FormatDateTimeString(auctionEventsResponse.SaleEndTime)
+                    , FormatDateTimeString(auctionEventsResponse.SessionStartTime)
+                    , FormatDateTimeString(auctionEventsResponse.SessionEndTime)
                     , auctionEventsResponse.ShippingConfigurationType
                     , auctionEventsResponse.DateTimeOffsetMinutes
                     , auctionEventsResponse.GeoRestrictionAttribute)
                 : string.Empty;
+
+        private static string FormatDateTimeString(DateTime dateTime) => dateTime.ToString("yyyy-MM-ddTHH:mm:ss");
+
+        private static string FormatEmailSignature(string? emailSignature) => emailSignature != null
+                                                                            ? emailSignature.Replace("<br>", "&lt;br&gt;")
+                                                                            : string.Empty;
     }
 }
