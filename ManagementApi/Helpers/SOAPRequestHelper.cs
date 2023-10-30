@@ -4,6 +4,7 @@
 
     public static class SOAPRequestHelper
     {
+        private const string SALE_TYPE = "TimeBased";
         /// <summary>
         /// Creates the SOAP Request from the auction event response.
         /// </summary>
