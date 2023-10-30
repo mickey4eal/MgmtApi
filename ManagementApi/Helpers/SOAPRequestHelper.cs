@@ -33,13 +33,15 @@
                     , auctionEventsResponse.Currency
                     , auctionEventsResponse.DefaultCreditLimit
                     , auctionEventsResponse.AnalyticsSaleType
-                    , auctionEventsResponse.SaleStartTime
-                    , auctionEventsResponse.SaleEndTime
-                    , auctionEventsResponse.SessionStartTime
-                    , auctionEventsResponse.SessionEndTime
+                    , FormatDateTimeString(auctionEventsResponse.SaleStartTime)
+                    , FormatDateTimeString(auctionEventsResponse.SaleEndTime)
+                    , FormatDateTimeString(auctionEventsResponse.SessionStartTime)
+                    , FormatDateTimeString(auctionEventsResponse.SessionEndTime)
                     , auctionEventsResponse.ShippingConfigurationType
                     , auctionEventsResponse.DateTimeOffsetMinutes
                     , auctionEventsResponse.GeoRestrictionAttribute)
                 : string.Empty;
+
+        private static string FormatDateTimeString(DateTime dateTime) => dateTime.ToString().Replace(" ", "T");
     }
 }
