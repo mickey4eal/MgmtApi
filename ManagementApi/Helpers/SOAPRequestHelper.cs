@@ -22,12 +22,12 @@
                     auctionEventsResponse.SaleName
                     , auctionEventsResponse.SaleNumber
                     , auctionEventsResponse.SaleStatus
-                    , auctionEventsResponse.SaleType
+                    , SALE_TYPE
                     , auctionEventsResponse.SalesTaxExemptionEnabled
                     , auctionEventsResponse.SaleEmail
                     , auctionEventsResponse.SaleHasInBondLots
-                    , auctionEventsResponse.SaleCoordinatorEmailSignature
-                    , auctionEventsResponse.LotEndTimeInterval
+                    , FormatEmailSignature(auctionEventsResponse.SaleCoordinatorEmailSignature)
+                    , LOT_END_TIME_INTERVAL
                     , auctionEventsResponse.KYCMandatory
                     , auctionEventsResponse.BidIncrementSet
                     , auctionEventsResponse.BondedDeliveryDisabled
