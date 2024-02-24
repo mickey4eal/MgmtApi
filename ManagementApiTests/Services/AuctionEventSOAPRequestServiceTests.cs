@@ -6,12 +6,12 @@
     using ManagementApi.Services.Interfaces;
     using Moq;
 
-    public class SOAPRequestServiceTests : TestBase
+    public class AuctionEventSOAPRequestServiceTests : TestBase
     {
         private readonly Mock<IAuctionEventService> _auctionEventServiceMock;
-        private readonly AuctionEventSOAPRequestService _soapRequestService;
+        private readonly ISOAPRequestService _soapRequestService;
 
-        public SOAPRequestServiceTests()
+        public AuctionEventSOAPRequestServiceTests()
         {
             _auctionEventServiceMock = new Mock<IAuctionEventService>();
             _soapRequestService = new AuctionEventSOAPRequestService(_auctionEventServiceMock.Object);
