@@ -9,12 +9,12 @@
     public class SOAPRequestServiceTests : TestBase
     {
         private readonly Mock<IAuctionEventService> _auctionEventServiceMock;
-        private readonly SOAPRequestService _soapRequestService;
+        private readonly AuctionEventSOAPRequestService _soapRequestService;
 
         public SOAPRequestServiceTests()
         {
             _auctionEventServiceMock = new Mock<IAuctionEventService>();
-            _soapRequestService = new SOAPRequestService(_auctionEventServiceMock.Object);
+            _soapRequestService = new AuctionEventSOAPRequestService(_auctionEventServiceMock.Object);
         }
 
         [Theory]
@@ -29,11 +29,11 @@
                 .ReturnsAsync(expectedAuctionEventDetails);
 
             // Act
-            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale(saleId);
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequest(saleId);
 
             // Assert
             Assert.False(string.IsNullOrEmpty(actualSOAPRequest));
-            Assert.Contains(SOAPRequestHelper.GenerateSOAPRequest(expectedAuctionEventDetails), actualSOAPRequest);
+            Assert.Contains(SOAPRequestHelper.GenerateAuctionEventSOAPRequest(expectedAuctionEventDetails), actualSOAPRequest);
         }
 
         [Theory]
@@ -51,7 +51,7 @@
             var expectedErrorMessage = $"SaleId {saleId} is not valid. Please enter a valid SaleId.";
 
             // Act
-            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale(saleId);
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequest(saleId);
 
             // Assert
             Assert.Equal(expectedErrorMessage, actualSOAPRequest);
@@ -68,7 +68,7 @@
             var expectedErrorMessage = "SaleId -123 is not valid. Please enter a valid SaleId.";
 
             // Act
-            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale("-123");
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequest("-123");
 
             // Assert
             Assert.Equal(expectedErrorMessage, actualSOAPRequest);
@@ -86,7 +86,7 @@
             var expectedErrorMessage = $"No Response for Request with SaleId {saleId}.\nPlease try again with a valid SaleId.";
 
             // Act
-            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequestForSale(saleId);
+            var actualSOAPRequest = await _soapRequestService.CreateSOAPRequest(saleId);
 
             // Assert
             Assert.Equal(expectedErrorMessage, actualSOAPRequest);
@@ -101,7 +101,7 @@
                 .ThrowsAsync(new Exception());
 
             // Act
-            var action = async () => await _soapRequestService.CreateSOAPRequestForSale("1234");
+            var action = async () => await _soapRequestService.CreateSOAPRequest("1234");
 
             // Assert
             await Assert.ThrowsAsync<Exception>(action);
