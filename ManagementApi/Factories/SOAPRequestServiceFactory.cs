@@ -3,21 +3,34 @@
     using ManagementApi.Factories.Interfaces;
     using ManagementApi.Models;
     using ManagementApi.Services;
+    using ManagementApi.Services.Interfaces;
     using System.Data.SqlClient;
 
     public class SOAPRequestServiceFactory : ISOAPRequestServiceFactory
     {
-        public SOAPRequestService Create(SOAPRequestServiceRequest sOAPRequestServiceRequest)
+        public ISOAPRequestService Create(SOAPRequestServiceRequest sOAPRequestServiceRequest)
         {
-            try            
+            if (sOAPRequestServiceRequest == null || string.IsNullOrWhiteSpace(sOAPRequestServiceRequest.ConnectionString))
             {
-                var connectionString = sOAPRequestServiceRequest?.ConnectionString;
-                if (string.IsNullOrWhiteSpace(connectionString))
-                    throw new ArgumentNullException();
+                throw new ArgumentNullException();
+            }
 
-                var wrapper = new SqlConnectionWrapper(new SqlConnection(connectionString));
-                var auctionEventService = new AuctionEventService(wrapper);
-                return new SOAPRequestService(auctionEventService);
+            try
+            {
+                var connectionString = sOAPRequestServiceRequest.ConnectionString;
+                var connection = new SqlConnection(connectionString);
+                var wrapper = new SqlConnectionWrapper(connection);
+
+                if (sOAPRequestServiceRequest.ShouldExecuteForSale)
+                {
+                    var auctionEventService = new AuctionEventService(wrapper);
+                    return new AuctionEventSOAPRequestService(auctionEventService);
+                }
+                else
+                {
+                    var itemService = new AuctionEventItemService(wrapper);
+                    return new LotItemSOAPRequestService(itemService);
+                }
             }
             catch (Exception ex)
             {
