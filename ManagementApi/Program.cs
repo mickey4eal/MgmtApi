@@ -1,25 +1,37 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ManagementApi.Factories;
+using ManagementApi.Helpers;
 using ManagementApi.Models;
+using ManagementApi.Resources;
 
-Console.WriteLine("SOAP Request Generator Started\nPlease enter a valid SaleId to Generator Management API Request Template for Sale\nTo End Process, Enter Exit or Ex");
-var shouldProgramRun = true;
+Console.WriteLine(ApiRequests.IntroCommandPromptMsg + ApiRequests.StandardCommandPromptMsg);
+
+bool shouldProgramRun;
 const string connectionString = "Trusted_Connection=True;";
 do
 {
-    var consoleInput = Console.ReadLine();
+    string? consoleInput = Console.ReadLine();
+    shouldProgramRun = ProgramHelper.ShouldProgramRun(consoleInput);
+    var shouldExecuteForSale = ProgramHelper.HasConfirmExecutionRoute(consoleInput);
 
-    if (consoleInput?.ToLower() is "exit" or "ex")
+    if (shouldExecuteForSale != null)
     {
-        shouldProgramRun = false;
-    }
-    else
-    {
-        var request = new SOAPRequestServiceRequest() { ConnectionString = connectionString };
-        var factory = new SOAPRequestServiceFactory();
-        var soapRequestService = factory.Create(request);
-        var result = await soapRequestService.CreateSOAPRequestForSale(consoleInput);
-        Console.WriteLine(result);
+        var consoleMsg = shouldExecuteForSale.Value
+            ? ApiRequests.RequestInputPromptMsgSale
+            : ApiRequests.RequestInputPromptMsgLot;
+        Console.WriteLine(consoleMsg);
+
+        consoleInput = Console.ReadLine();
+        shouldProgramRun = ProgramHelper.ShouldProgramRun(consoleInput);
+
+        if (shouldProgramRun)
+        {
+            var request = new SOAPRequestServiceRequest() { ConnectionString = connectionString, ShouldExecuteForSale = shouldExecuteForSale.Value };
+            var factory = new SOAPRequestServiceFactory();
+            var soapRequestService = factory.Create(request);
+            var result = await soapRequestService.CreateSOAPRequest(consoleInput);
+            Console.WriteLine(result);
+        }
     }
 }
 while (shouldProgramRun);
