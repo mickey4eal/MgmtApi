@@ -117,6 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="IntroCommandPromptMsg" xml:space="preserve">
+    <value>SOAP Request Generator Started\n</value>
+  </data>
+  <data name="LotItemSoapUIRequestTemplate" xml:space="preserve">
+    <value>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://christies.perfectchannel.com/2017/01/ManagementAPI/" xmlns:lot="http://christies.perfectchannel.com/2017/01/ManagementAPI/Lot/" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:sys="http://schemas.datacontract.org/2004/07/System"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;man:CreateOrUpdateLot&gt;
+         &lt;!--Optional:--&gt;
+         &lt;man:request&gt;
+            &lt;!--Optional:--&gt;
+            &lt;lot:ApplicationCorrelationId&gt;d33a376d-28b8-4aa4-847b-53386e641047&lt;/lot:ApplicationCorrelationId&gt;
+            &lt;lot:ConsignorType&gt;{0}&lt;/lot:ConsignorType&gt;
+            &lt;lot:ExplicitContent&gt;{1}&lt;/lot:ExplicitContent&gt;
+            &lt;!--Optional:--&gt;
+            &lt;lot:Fragile&gt;{2}&lt;/lot:Fragile&gt;
+            &lt;lot:HubCode&gt;{3}&lt;/lot:HubCode&gt;
+            &lt;!--Item codes: S (Standard), B (Book) or W (Wine)--&gt;
+            &lt;lot:ItemType&gt;{4}&lt;/lot:ItemType&gt;
+            &lt;!--Defines its order inside the sale:--&gt;
+            &lt;lot:LotNumber&gt;{5}&lt;/lot:LotNumber&gt;
+            &lt;!--AuctionEvent's Sale Number:--&gt;
+            &lt;lot:SaleNumber&gt;{6}&lt;/lot:SaleNumber&gt;
+            &lt;lot:SaleRoomNoticeChangeDate&gt;
+               &lt;sys:DateTime&gt;2024-03-11T15:05:46.4733406+01:00&lt;/sys:DateTime&gt;
+               &lt;sys:OffsetMinutes&gt;100&lt;/sys:OffsetMinutes&gt;
+            &lt;/lot:SaleRoomNoticeChangeDate&gt;
+            &lt;lot:TimedBasedConfiguration&gt;
+               &lt;!--Optional:--&gt;
+               &lt;lot:Reserve&gt;{7}&lt;/lot:Reserve&gt;
+               &lt;!--Optional:--&gt;
+               &lt;lot:StartingBidAmount&gt;{8}&lt;/lot:StartingBidAmount&gt;
+            &lt;/lot:TimedBasedConfiguration&gt;
+            &lt;!--AT LEAST ONE REPETITION (english language):--&gt;
+            &lt;lot:Translations&gt;               
+			   {10}
+            &lt;/lot:Translations&gt;			
+            &lt;!--&lt;Sale Number&gt;.&lt;Lot number&gt;:--&gt;
+            &lt;lot:UniqueIdentifier&gt;{9}&lt;/lot:UniqueIdentifier&gt;
+         &lt;/man:request&gt;
+      &lt;/man:CreateOrUpdateLot&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</value>
+  </data>
+  <data name="LotTranslationTemplate" xml:space="preserve">
+    <value>&lt;lot:LotTranslation&gt;
+                  &lt;lot:ArtistMaker&gt;{0}&lt;/lot:ArtistMaker&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:ConditionReport&gt;{1}&lt;/lot:ConditionReport&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:Description&gt;{2}&lt;/lot:Description&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:Engraved&gt;{3}&lt;/lot:Engraved&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:Exhibited&gt;{4}&lt;/lot:Exhibited&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:ExtraInformation&gt;{5}&lt;/lot:ExtraInformation&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:LanguageCode&gt;{6}&lt;/lot:LanguageCode&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:Literature&gt;{7}n&lt;/lot:Literature&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:LotEssay&gt;{8}&lt;/lot:LotEssay&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:PostLotText&gt;{9}&lt;/lot:PostLotText&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:PreLotText&gt;{10}&lt;/lot:PreLotText&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:Provenance&gt;{11}&lt;/lot:Provenance&gt;
+                  &lt;!--Optional:--&gt;
+                  &lt;lot:Title&gt;{12}&lt;/lot:Title&gt;
+&lt;/lot:LotTranslation&gt;</value>
+  </data>
+  <data name="RequestInputPromptMsgLot" xml:space="preserve">
+    <value>\nPlease enter a valid ItemId e.g. 456789 to Generator Management API Request Template for Lot\nTo End Process, Enter Exit or Ex</value>
+  </data>
+  <data name="RequestInputPromptMsgSale" xml:space="preserve">
+    <value>\nPlease enter a valid SaleId e.g. 1234 to Generator Management API Request Template for Sale\nTo End Process, Enter Exit or Ex</value>
+  </data>
   <data name="SoapUIRequestTemplate" xml:space="preserve">
     <value>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://christies.perfectchannel.com/2017/01/ManagementAPI/" xmlns:sale="http://christies.perfectchannel.com/2017/01/ManagementAPI/Sale/" xmlns:sys="http://schemas.datacontract.org/2004/07/System"&gt;
 	&lt;soapenv:Header/&gt;
@@ -218,5 +297,8 @@
 {21}: ShippingConfigurationType
 {22}: DateTime OffsetMinutes
 {23}: GeoRestrictionAttribute</comment>
+  </data>
+  <data name="StandardCommandPromptMsg" xml:space="preserve">
+    <value>To Generate SOAP Request for a Sale, Please enter 's' or 'sale'\nTo Generate SOAP Request for a lot, Please enter 'l' or 'lot'\nTo End Process, Enter Exit or Ex</value>
   </data>
 </root>
