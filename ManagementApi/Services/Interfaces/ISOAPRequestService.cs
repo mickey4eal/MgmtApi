@@ -3,10 +3,10 @@
     public interface ISOAPRequestService
     {
         /// <summary>
-        /// Create a SOAP Request for a given Sale Id
+        /// Create a SOAP Request for a given input
         /// </summary>
-        /// <param name="saleId"></param>
+        /// <param name="input"></param>
         /// <returns>Returns a <see cref='string'/></returns>
-        Task<string> CreateSOAPRequestForSale(string? saleId);
+        Task<string> CreateSOAPRequest(string? input);
     }
 }
