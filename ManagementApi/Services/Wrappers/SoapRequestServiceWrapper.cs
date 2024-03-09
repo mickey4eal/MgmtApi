@@ -17,11 +17,16 @@
 
         public async Task<string> CreateSOAPRequest(SOAPRequestServiceRequest request)
         {
-            var wrapper = new SqlConnectionWrapper(_sqlConnection);
+            var wrapper = GetSqlConnectionWrapper();
             var soapFactory = GetSoapFactory(wrapper);
             var soapRequestService = soapFactory.Create(request);
             var result = await soapRequestService.CreateSOAPRequest(request.Input);
             return result;
+        }
+
+        private SqlConnectionWrapper GetSqlConnectionWrapper()
+        {
+            return new SqlConnectionWrapper(_sqlConnection);
         }
 
         private static SOAPRequestServiceFactory GetSoapFactory(SqlConnectionWrapper wrapper)
