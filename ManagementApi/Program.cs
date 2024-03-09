@@ -3,6 +3,8 @@ using ManagementApi.Factories;
 using ManagementApi.Helpers;
 using ManagementApi.Models;
 using ManagementApi.Resources;
+using ManagementApi.Services;
+using System.Data.SqlClient;
 
 Console.WriteLine(ApiRequests.IntroCommandPromptMsg + ApiRequests.StandardCommandPromptMsg);
 
@@ -12,7 +14,7 @@ do
 {
     string? consoleInput = Console.ReadLine();
     shouldProgramRun = ProgramHelper.ShouldProgramRun(consoleInput);
-    var shouldExecuteForSale = ProgramHelper.HasConfirmExecutionRoute(consoleInput);
+    var shouldExecuteForSale = ProgramHelper.HasConfirmedExecutionRoute(consoleInput);
 
     if (shouldExecuteForSale != null)
     {
@@ -27,8 +29,10 @@ do
         if (shouldProgramRun)
         {
             var request = new SOAPRequestServiceRequest() { ConnectionString = connectionString, ShouldExecuteForSale = shouldExecuteForSale.Value };
-            var factory = new SOAPRequestServiceFactory();
-            var soapRequestService = factory.Create(request);
+            var connection = new SqlConnection(request.ConnectionString);
+            var wrapper = new SqlConnectionWrapper(connection);
+            var soapFactory = new SOAPRequestServiceFactory(wrapper);
+            var soapRequestService = soapFactory.Create(request);
             var result = await soapRequestService.CreateSOAPRequest(consoleInput);
             Console.WriteLine(result);
         }
