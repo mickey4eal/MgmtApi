@@ -1,5 +1,6 @@
 ﻿using ManagementApi.Helpers;
 using ManagementApi.Models;
+using ManagementApi.Resources;
 using ManagementApi.Services.Interfaces;
 
 namespace ManagementApi.Services
@@ -13,21 +14,22 @@ namespace ManagementApi.Services
             _auctionEventItemService = auctionEventItemService;
         }
 
-        public async Task<string> CreateSOAPRequest(string? itemId)
+        public async Task<string> CreateSOAPRequest(string? ItemId)
         {
+            const string nameOfInput = nameof(ItemId);
             AuctionEventItemResponse? response;
 
-            if (SOAPRequestHelper.IsValidRequestInput(itemId))
+            if (SOAPRequestHelper.IsValidRequestInput(ItemId))
             {
-                response = await _auctionEventItemService.GetAuctionEventItemDetails(int.Parse(itemId!));
+                response = await _auctionEventItemService.GetAuctionEventItemDetails(int.Parse(ItemId!));
             }
             else
             {
-                return $"ItemId {itemId} is not valid. Please enter a valid ItemId.";
+                return string.Format(ApiRequests.InvalidInputMsg, nameOfInput, ItemId);
             }
 
             return response == null
-                ? $"No Response for Request with ItemId {itemId}.\nPlease try again with a valid ItemId."
+                ? string.Format(ApiRequests.NoResponseMsg, nameOfInput, ItemId)
                 : SOAPRequestHelper.GenerateLotItemSOAPRequest(response);
         }
     }
