@@ -1,24 +1,25 @@
-﻿using ManagementApi.Resources;
-
-namespace ManagementApi.Helpers
+﻿namespace ManagementApi.Helpers
 {
+    using ManagementApi.Constants;
+    using ManagementApi.Resources;
+
     public static class ProgramHelper
     {
-        public static bool? HasConfirmExecutionRoute(string? consoleInput)
+        public static bool? HasConfirmedExecutionRoute(string? consoleInput)
         {
             bool? hasConfirmExecutionRoute = null;
 
-            if (IsBooleanVarNull(hasConfirmExecutionRoute) && (consoleInput?.ToLower() is "s" or "sale"))
+            if (IsBooleanNull(hasConfirmExecutionRoute) && (consoleInput?.ToLower() is ProgramHelperStrings.S or ProgramHelperStrings.SALE))
             {
                 hasConfirmExecutionRoute = true;
             }
 
-            if (IsBooleanVarNull(hasConfirmExecutionRoute) && (consoleInput?.ToLower() is "l" or "lot"))
+            if (IsBooleanNull(hasConfirmExecutionRoute) && (consoleInput?.ToLower() is ProgramHelperStrings.L or ProgramHelperStrings.LOT))
             {
                 hasConfirmExecutionRoute = false;
             }
 
-            if (IsBooleanVarNull(hasConfirmExecutionRoute))
+            if (IsBooleanNull(hasConfirmExecutionRoute))
             {
                 Console.WriteLine(ApiRequests.StandardCommandPromptMsg);
             }
@@ -26,8 +27,8 @@ namespace ManagementApi.Helpers
             return hasConfirmExecutionRoute;
         }
 
-        public static bool ShouldProgramRun(string? consoleInput) => !(consoleInput?.ToLower() is "exit" or "ex");
+        public static bool ShouldProgramRun(string? consoleInput) => !(consoleInput?.ToLower() is ProgramHelperStrings.EX or ProgramHelperStrings.EXIT);
 
-        private static bool IsBooleanVarNull(bool? value) => value == null;
+        public static bool IsBooleanNull(bool? value) => value == null;
     }
 }
