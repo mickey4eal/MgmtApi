@@ -83,7 +83,7 @@
                 .Setup(s => s.GetAuctionEventItemDetails(It.IsAny<int?>()))
                 .ReturnsAsync((AuctionEventItemResponse?)null);
 
-            var expectedErrorMessage = $"No Response for Request with ItemId {itemId}.\nPlease try again with a valid ItemId.";
+            var expectedErrorMessage = $"No Response for Request with ItemId {itemId}.\r\nPlease try again with a valid ItemId.";
 
             // Act
             var actualSOAPRequest = await _soapRequestService.CreateSOAPRequest(itemId);
