@@ -4,32 +4,34 @@
     using ManagementApi.Models;
     using ManagementApi.Services;
     using ManagementApi.Services.Interfaces;
-    using System.Data.SqlClient;
 
     public class SOAPRequestServiceFactory : ISOAPRequestServiceFactory
     {
-        public ISOAPRequestService Create(SOAPRequestServiceRequest sOAPRequestServiceRequest)
+        private readonly ISqlConnectionWrapper _wrapper;
+
+        public SOAPRequestServiceFactory(ISqlConnectionWrapper wrapper)
         {
-            if (sOAPRequestServiceRequest == null || string.IsNullOrWhiteSpace(sOAPRequestServiceRequest.ConnectionString))
+            _wrapper = wrapper;
+        }
+
+        public ISOAPRequestService Create(SOAPRequestServiceRequest request)
+        {
+            if (request == null || string.IsNullOrWhiteSpace(request.ConnectionString))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentException("Request or ConnectionString cannot be null or empty.");
             }
 
             try
             {
-                var connectionString = sOAPRequestServiceRequest.ConnectionString;
-                var connection = new SqlConnection(connectionString);
-                var wrapper = new SqlConnectionWrapper(connection);
-
-                if (sOAPRequestServiceRequest.ShouldExecuteForSale)
+                if (request.ShouldExecuteForSale)
                 {
-                    var auctionEventService = new AuctionEventService(wrapper);
-                    return new AuctionEventSOAPRequestService(auctionEventService);
+                    var service = new AuctionEventService(_wrapper);
+                    return new AuctionEventSOAPRequestService(service);
                 }
                 else
                 {
-                    var itemService = new AuctionEventItemService(wrapper);
-                    return new LotItemSOAPRequestService(itemService);
+                    var service = new AuctionEventItemService(_wrapper);
+                    return new LotItemSOAPRequestService(service);
                 }
             }
             catch (Exception ex)

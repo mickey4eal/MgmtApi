@@ -1,8 +1,8 @@
-using ManagementApi.Responses;
-using ManagementApi.Services;
-using ManagementApi.Services.Interfaces;
 namespace ManagementApiTests.Services
 {
+    using ManagementApi.Responses;
+    using ManagementApi.Services;
+    using ManagementApi.Services.Interfaces;
     using Moq;
 
     public class AuctionEventServiceTests : TestBase

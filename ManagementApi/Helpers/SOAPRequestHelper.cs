@@ -1,13 +1,11 @@
 ﻿namespace ManagementApi.Helpers
 {
+    using ManagementApi.Constants;
     using ManagementApi.Models;
     using ManagementApi.Responses;
 
     public static class SOAPRequestHelper
     {
-        private const string SALE_TYPE = "TimeBased";
-        private const string LOT_END_TIME_INTERVAL = "PT2M";
-
         /// <summary>
         /// Creates the SOAP Request from the auction event response.
         /// </summary>
@@ -33,12 +31,12 @@
                     , auctionEventsResponse.SaleName
                     , auctionEventsResponse.SaleNumber
                     , auctionEventsResponse.SaleStatus
-                    , SALE_TYPE
+                    , SOAPRequestHelperStrings.SALE_TYPE
                     , auctionEventsResponse.SalesTaxExemptionEnabled
                     , auctionEventsResponse.SaleEmail
                     , auctionEventsResponse.SaleHasInBondLots
                     , FormatEmailSignature(auctionEventsResponse.SaleCoordinatorEmailSignature)
-                    , LOT_END_TIME_INTERVAL
+                    , SOAPRequestHelperStrings.LOT_END_TIME_INTERVAL
                     , auctionEventsResponse.KYCMandatory
                     , auctionEventsResponse.BidIncrementSet
                     , auctionEventsResponse.BondedDeliveryDisabled

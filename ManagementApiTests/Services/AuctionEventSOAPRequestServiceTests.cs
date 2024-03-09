@@ -83,7 +83,7 @@
                 .Setup(s => s.GetAuctionEventDetails(It.IsAny<int?>()))
                 .ReturnsAsync((AuctionEventsResponse?)null);
 
-            var expectedErrorMessage = $"No Response for Request with SaleId {saleId}.\nPlease try again with a valid SaleId.";
+            var expectedErrorMessage = $"No Response for Request with SaleId {saleId}.\r\nPlease try again with a valid SaleId.";
 
             // Act
             var actualSOAPRequest = await _soapRequestService.CreateSOAPRequest(saleId);

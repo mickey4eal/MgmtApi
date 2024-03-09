@@ -61,11 +61,20 @@ namespace ManagementApi.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SOAP Request Generator Started\n.
+        ///   Looks up a localized string similar to SOAP Request Generator Started.
         /// </summary>
         internal static string IntroCommandPromptMsg {
             get {
                 return ResourceManager.GetString("IntroCommandPromptMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1} is not valid. Please enter a valid {0}..
+        /// </summary>
+        internal static string InvalidInputMsg {
+            get {
+                return ResourceManager.GetString("InvalidInputMsg", resourceCulture);
             }
         }
         
@@ -106,7 +115,18 @@ namespace ManagementApi.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \nPlease enter a valid ItemId e.g. 456789 to Generator Management API Request Template for Lot\nTo End Process, Enter Exit or Ex.
+        ///   Looks up a localized string similar to No Response for Request with {0} {1}.
+        ///Please try again with a valid {0}..
+        /// </summary>
+        internal static string NoResponseMsg {
+            get {
+                return ResourceManager.GetString("NoResponseMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid ItemId e.g. 456789 to Generator Management API Request Template for Lot
+        ///To End Process, Enter Exit or Ex.
         /// </summary>
         internal static string RequestInputPromptMsgLot {
             get {
@@ -115,7 +135,8 @@ namespace ManagementApi.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \nPlease enter a valid SaleId e.g. 1234 to Generator Management API Request Template for Sale\nTo End Process, Enter Exit or Ex.
+        ///   Looks up a localized string similar to Please enter a valid SaleId e.g. 1234 to Generator Management API Request Template for Sale
+        ///To End Process, Enter Exit or Ex.
         /// </summary>
         internal static string RequestInputPromptMsgSale {
             get {
@@ -140,7 +161,9 @@ namespace ManagementApi.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To Generate SOAP Request for a Sale, Please enter &apos;s&apos; or &apos;sale&apos;\nTo Generate SOAP Request for a lot, Please enter &apos;l&apos; or &apos;lot&apos;\nTo End Process, Enter Exit or Ex.
+        ///   Looks up a localized string similar to To Generate SOAP Request for a Sale, Please enter &apos;s&apos; or &apos;sale&apos;
+        ///To Generate SOAP Request for a lot, Please enter &apos;l&apos; or &apos;lot&apos;
+        ///To End Process, Enter Exit or Ex.
         /// </summary>
         internal static string StandardCommandPromptMsg {
             get {
