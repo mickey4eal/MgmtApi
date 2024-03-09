@@ -1,41 +1,46 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using ManagementApi.Factories;
 using ManagementApi.Helpers;
 using ManagementApi.Models;
 using ManagementApi.Resources;
-using ManagementApi.Services;
+using ManagementApi.Services.Wrappers;
 using System.Data.SqlClient;
 
-Console.WriteLine(ApiRequests.IntroCommandPromptMsg + ApiRequests.StandardCommandPromptMsg);
+Console.WriteLine(ApiRequests.IntroCommandPromptMsg + "\n" + ApiRequests.StandardCommandPromptMsg);
 
-bool shouldProgramRun;
+bool shouldRun;
 const string connectionString = "Trusted_Connection=True;";
 do
 {
-    string? consoleInput = Console.ReadLine();
-    shouldProgramRun = ProgramHelper.ShouldProgramRun(consoleInput);
-    var shouldExecuteForSale = ProgramHelper.HasConfirmedExecutionRoute(consoleInput);
+    string? input = Console.ReadLine();
+    shouldRun = ProgramHelper.ShouldProgramRun(input);
+    var shouldExecuteForSale = ProgramHelper.HasConfirmedExecutionRoute(input);
 
     if (shouldExecuteForSale != null)
     {
-        var consoleMsg = shouldExecuteForSale.Value
+        var promptConsoleMsg = shouldExecuteForSale.Value
             ? ApiRequests.RequestInputPromptMsgSale
             : ApiRequests.RequestInputPromptMsgLot;
-        Console.WriteLine(consoleMsg);
+        Console.WriteLine(promptConsoleMsg);
 
-        consoleInput = Console.ReadLine();
-        shouldProgramRun = ProgramHelper.ShouldProgramRun(consoleInput);
+        input = Console.ReadLine();
+        shouldRun = ProgramHelper.ShouldProgramRun(input);
 
-        if (shouldProgramRun)
+        if (shouldRun)
         {
-            var request = new SOAPRequestServiceRequest() { ConnectionString = connectionString, ShouldExecuteForSale = shouldExecuteForSale.Value };
-            var connection = new SqlConnection(request.ConnectionString);
-            var wrapper = new SqlConnectionWrapper(connection);
-            var soapFactory = new SOAPRequestServiceFactory(wrapper);
-            var soapRequestService = soapFactory.Create(request);
-            var result = await soapRequestService.CreateSOAPRequest(consoleInput);
-            Console.WriteLine(result);
+            var request = new SOAPRequestServiceRequest()
+            {
+                ConnectionString = connectionString,
+                ShouldExecuteForSale = shouldExecuteForSale.Value,
+                Input = input
+            };
+
+            using (var connection = new SqlConnection(request.ConnectionString))
+            {
+                var serviceWrapper = new SoapRequestServiceWrapper(connection);
+                var result = await serviceWrapper.CreateSOAPRequest(request);
+                Console.WriteLine(result);
+            }
         }
     }
 }
-while (shouldProgramRun);
+while (shouldRun);
