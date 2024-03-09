@@ -24,14 +24,8 @@
             return result;
         }
 
-        private SqlConnectionWrapper GetSqlConnectionWrapper()
-        {
-            return new SqlConnectionWrapper(_sqlConnection);
-        }
+        private SqlConnectionWrapper GetSqlConnectionWrapper() => new(_sqlConnection);
 
-        private static SOAPRequestServiceFactory GetSoapFactory(SqlConnectionWrapper wrapper)
-        {
-            return new SOAPRequestServiceFactory(wrapper);
-        }
+        private static SOAPRequestServiceFactory GetSoapFactory(ISqlConnectionWrapper wrapper) => new(wrapper);
     }
 }
