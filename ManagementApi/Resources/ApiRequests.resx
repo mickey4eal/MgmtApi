@@ -118,7 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="IntroCommandPromptMsg" xml:space="preserve">
-    <value>SOAP Request Generator Started\n</value>
+    <value>SOAP Request Generator Started</value>
+  </data>
+  <data name="InvalidInputMsg" xml:space="preserve">
+    <value>{0} {1} is not valid. Please enter a valid {0}.</value>
+    <comment>{0}: name of input
+{1}: input value</comment>
   </data>
   <data name="LotItemSoapUIRequestTemplate" xml:space="preserve">
     <value>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://christies.perfectchannel.com/2017/01/ManagementAPI/" xmlns:lot="http://christies.perfectchannel.com/2017/01/ManagementAPI/Lot/" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:sys="http://schemas.datacontract.org/2004/07/System"&gt;
@@ -190,11 +195,19 @@
                   &lt;lot:Title&gt;{12}&lt;/lot:Title&gt;
 &lt;/lot:LotTranslation&gt;</value>
   </data>
+  <data name="NoResponseMsg" xml:space="preserve">
+    <value>No Response for Request with {0} {1}.
+Please try again with a valid {0}.</value>
+    <comment>{0}: name of input
+{1}: input value</comment>
+  </data>
   <data name="RequestInputPromptMsgLot" xml:space="preserve">
-    <value>\nPlease enter a valid ItemId e.g. 456789 to Generator Management API Request Template for Lot\nTo End Process, Enter Exit or Ex</value>
+    <value>Please enter a valid ItemId e.g. 456789 to Generator Management API Request Template for Lot
+To End Process, Enter Exit or Ex</value>
   </data>
   <data name="RequestInputPromptMsgSale" xml:space="preserve">
-    <value>\nPlease enter a valid SaleId e.g. 1234 to Generator Management API Request Template for Sale\nTo End Process, Enter Exit or Ex</value>
+    <value>Please enter a valid SaleId e.g. 1234 to Generator Management API Request Template for Sale
+To End Process, Enter Exit or Ex</value>
   </data>
   <data name="SoapUIRequestTemplate" xml:space="preserve">
     <value>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://christies.perfectchannel.com/2017/01/ManagementAPI/" xmlns:sale="http://christies.perfectchannel.com/2017/01/ManagementAPI/Sale/" xmlns:sys="http://schemas.datacontract.org/2004/07/System"&gt;
@@ -299,6 +312,8 @@
 {23}: GeoRestrictionAttribute</comment>
   </data>
   <data name="StandardCommandPromptMsg" xml:space="preserve">
-    <value>To Generate SOAP Request for a Sale, Please enter 's' or 'sale'\nTo Generate SOAP Request for a lot, Please enter 'l' or 'lot'\nTo End Process, Enter Exit or Ex</value>
+    <value>To Generate SOAP Request for a Sale, Please enter 's' or 'sale'
+To Generate SOAP Request for a lot, Please enter 'l' or 'lot'
+To End Process, Enter Exit or Ex</value>
   </data>
 </root>
