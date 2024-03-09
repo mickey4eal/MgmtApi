@@ -1,4 +1,4 @@
-﻿namespace ManagementApi.Services
+﻿namespace ManagementApi.Services.Wrappers
 {
     using Dapper;
     using ManagementApi.Services.Interfaces;
