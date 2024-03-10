@@ -7,24 +7,24 @@
     {
         public static bool? HasConfirmedExecutionRoute(string? consoleInput)
         {
-            bool? hasConfirmExecutionRoute = null;
+            bool? hasConfirmedExecutionRoute = null;
 
-            if (IsBooleanNull(hasConfirmExecutionRoute) && (consoleInput?.ToLower() is ProgramHelperStrings.S or ProgramHelperStrings.SALE))
+            if (IsBooleanNull(hasConfirmedExecutionRoute) && (consoleInput?.ToLower() is ProgramHelperStrings.S or ProgramHelperStrings.SALE))
             {
-                hasConfirmExecutionRoute = true;
+                hasConfirmedExecutionRoute = true;
             }
 
-            if (IsBooleanNull(hasConfirmExecutionRoute) && (consoleInput?.ToLower() is ProgramHelperStrings.L or ProgramHelperStrings.LOT))
+            if (IsBooleanNull(hasConfirmedExecutionRoute) && (consoleInput?.ToLower() is ProgramHelperStrings.L or ProgramHelperStrings.LOT))
             {
-                hasConfirmExecutionRoute = false;
+                hasConfirmedExecutionRoute = false;
             }
 
-            if (IsBooleanNull(hasConfirmExecutionRoute))
+            if (IsBooleanNull(hasConfirmedExecutionRoute))
             {
                 Console.WriteLine(ApiRequests.StandardCommandPromptMsg);
             }
 
-            return hasConfirmExecutionRoute;
+            return hasConfirmedExecutionRoute;
         }
 
         public static bool ShouldProgramRun(string? consoleInput) => !(consoleInput?.ToLower() is ProgramHelperStrings.EX or ProgramHelperStrings.EXIT);
