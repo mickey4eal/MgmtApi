@@ -1,3 +1,3 @@
 # MgmtApi
-- Project for Generating SOAP Requests for a Sale
-- SOAP Requests are used when testing the Management API Service
+- Command Line App for Generating SOAP Requests
+- The SOAP Requests are used when testing a Management API Service
