@@ -6,9 +6,6 @@
     using ManagementApi.Services;
     using ManagementApi.Services.Interfaces;
     using Moq;
-    using NSubstitute;
-    using NSubstitute.ExceptionExtensions;
-    using System.Data.SqlClient;
 
     public class SOAPRequestServiceFactoryTests : TestBase
     {
@@ -76,20 +73,5 @@
             // Assert
             Assert.IsType<LotItemSOAPRequestService>(soapRequestService);
         }
-
-        //[Fact]
-        //public void Create_Should_Throw_Exception_When__SoapRequestServiceFactory_Create_Method_Is_Called()
-        //{
-        //    // Arrange
-        //    var exception = new Exception();
-        //    var soapRequestServiceRequest = new SOAPRequestServiceRequest { ConnectionString = CONNECTION_STRING, ShouldExecuteForSale = false };
-        //    _soapRequestServiceFactory.Create(soapRequestServiceRequest).ThrowsForAnyArgs(exception);
-
-        //    // Act
-        //    var action = () => _soapRequestServiceFactory.Create(soapRequestServiceRequest);
-
-        //    // Assert
-        //    Assert.Throws<Exception>(() => action());
-        //}
     }
 }
