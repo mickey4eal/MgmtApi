@@ -1,8 +1,8 @@
 ﻿namespace ManagementApi.Services.Wrappers
 {
-    using ManagementApi.Factories;
-    using ManagementApi.Models;
-    using ManagementApi.Services.Interfaces;
+    using Factories;
+    using Models;
+    using Interfaces;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
 

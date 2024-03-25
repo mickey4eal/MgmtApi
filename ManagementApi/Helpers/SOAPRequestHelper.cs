@@ -1,8 +1,8 @@
 ﻿namespace ManagementApi.Helpers
 {
-    using ManagementApi.Constants;
-    using ManagementApi.Models;
-    using ManagementApi.Responses;
+    using Constants;
+    using Models;
+    using Responses;
 
     public static class SOAPRequestHelper
     {

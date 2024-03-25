@@ -1,7 +1,7 @@
 ﻿namespace ManagementApi.Helpers
 {
-    using ManagementApi.Constants;
-    using ManagementApi.Resources;
+    using Constants;
+    using Resources;
 
     public static class ProgramHelper
     {

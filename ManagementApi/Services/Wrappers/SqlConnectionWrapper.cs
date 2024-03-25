@@ -1,7 +1,7 @@
 ﻿namespace ManagementApi.Services.Wrappers
 {
     using Dapper;
-    using ManagementApi.Services.Interfaces;
+    using Interfaces;
     using System.Data.SqlClient;
 
     public class SqlConnectionWrapper : ISqlConnectionWrapper

@@ -1,8 +1,8 @@
 ﻿namespace ManagementApi.Services
 {
-    using ManagementApi.Constants;
-    using ManagementApi.Responses;
-    using ManagementApi.Services.Interfaces;
+    using Constants;
+    using Interfaces;
+    using Responses;
     using System.Collections.Generic;
 
     public class AuctionEventService : IAuctionEventService

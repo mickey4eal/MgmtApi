@@ -1,8 +1,7 @@
 ﻿namespace ManagementApi.Factories.Interfaces
 {
-    using ManagementApi.Models;
-    using ManagementApi.Services;
-    using ManagementApi.Services.Interfaces;
+    using Models;
+    using Services.Interfaces;
 
     public interface ISOAPRequestServiceFactory
     {

@@ -1,7 +1,7 @@
-﻿using ManagementApi.Models;
-
-namespace ManagementApi.Services.Interfaces
+﻿namespace ManagementApi.Services.Interfaces
 {
+    using Models;
+
     public interface ISoapRequestServiceWrapper
     {
         /// <summary>

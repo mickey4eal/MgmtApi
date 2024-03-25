@@ -1,8 +1,8 @@
 ﻿namespace ManagementApi.Services
 {
     using Constants;
+    using Interfaces;
     using Models;
-    using Services.Interfaces;
     using System.Threading.Tasks;
 
     public class AuctionEventItemService : IAuctionEventItemService

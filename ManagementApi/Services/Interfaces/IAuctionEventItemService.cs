@@ -1,6 +1,6 @@
 ﻿namespace ManagementApi.Services.Interfaces
 {
-    using ManagementApi.Models;
+    using Models;
 
     public interface IAuctionEventItemService
     {

@@ -1,6 +1,6 @@
 ﻿namespace ManagementApi.Services.Interfaces
 {
-    using ManagementApi.Responses;
+    using Responses;
 
     public interface IAuctionEventService
     {

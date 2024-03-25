@@ -1,9 +1,9 @@
 ﻿namespace ManagementApi.Factories
 {
-    using ManagementApi.Factories.Interfaces;
-    using ManagementApi.Models;
-    using ManagementApi.Services;
-    using ManagementApi.Services.Interfaces;
+    using Interfaces;
+    using Models;
+    using Services;
+    using Services.Interfaces;
 
     public class SOAPRequestServiceFactory : ISOAPRequestServiceFactory
     {
