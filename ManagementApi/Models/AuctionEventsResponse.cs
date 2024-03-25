@@ -1,6 +1,7 @@
 ﻿namespace ManagementApi.Responses
 {
-    using ManagementApi.Models;
+    using Constants;
+    using Models;
 
     public class AuctionEventsResponse
     {
@@ -26,7 +27,7 @@
         public DateTime SessionStartTime { get; set; }
         public DateTime SessionEndTime { get; set; }
         public ShippingConfigurationType? ShippingConfigurationType { get; set; }
-        public int? DateTimeOffsetMinutes { get; set; } = 60;
+        public int? DateTimeOffsetMinutes { get; set; } = Numbers.SIXTY_MINUTES;
         public string? GeoRestrictionAttribute { get; set; }
     }
 }
