@@ -1,6 +1,6 @@
 ﻿namespace ManagementApi.Constants
 {
-    public static class ProgramHelperStrings
+    public static class Strings
     {
         public const string S = "s";
         public const string SALE = "sale";
@@ -8,12 +8,18 @@
         public const string LOT = "lot";
         public const string EX = "ex";
         public const string EXIT = "exit";
-    }
-
-    public static class SOAPRequestHelperStrings
-    {
+        public const string CONSIGNOR_TYPE = "Private";
         public const string SALE_TYPE = "TimeBased";
         public const string LOT_END_TIME_INTERVAL = "PT2M";
+        public const string ENGLISH_LANGUAGE_CODE = "PT2M";
+    }
+
+    public static class Numbers
+    {
+        public const int SIXTY_MINUTES = 60;
+        public const int HUB_CODE = 130;
+        public const int LOT_RESERVE = 500;
+        public const int STARTING_BID = 500;
     }
 
     public static class SQLQueries
