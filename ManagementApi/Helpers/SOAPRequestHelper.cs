@@ -31,12 +31,12 @@
                     , auctionEventsResponse.SaleName
                     , auctionEventsResponse.SaleNumber
                     , auctionEventsResponse.SaleStatus
-                    , SOAPRequestHelperStrings.SALE_TYPE
+                    , Strings.SALE_TYPE
                     , auctionEventsResponse.SalesTaxExemptionEnabled
                     , auctionEventsResponse.SaleEmail
                     , auctionEventsResponse.SaleHasInBondLots
                     , FormatEmailSignature(auctionEventsResponse.SaleCoordinatorEmailSignature)
-                    , SOAPRequestHelperStrings.LOT_END_TIME_INTERVAL
+                    , Strings.LOT_END_TIME_INTERVAL
                     , auctionEventsResponse.KYCMandatory
                     , auctionEventsResponse.BidIncrementSet
                     , auctionEventsResponse.BondedDeliveryDisabled
