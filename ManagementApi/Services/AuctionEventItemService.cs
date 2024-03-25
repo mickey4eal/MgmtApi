@@ -1,8 +1,8 @@
 ﻿namespace ManagementApi.Services
 {
-    using ManagementApi.Constants;
-    using ManagementApi.Models;
-    using ManagementApi.Services.Interfaces;
+    using Constants;
+    using Models;
+    using Services.Interfaces;
     using System.Threading.Tasks;
 
     public class AuctionEventItemService : IAuctionEventItemService
@@ -29,7 +29,7 @@
 
                     if (auctionEventItemResponse != null)
                     {
-                        // Add Translations
+                        // Add Lot Translations
                         var engTranslation = await _sqlConnectionWrapper.QuerySingleOrDefaultAsync<LotTranslation>(CreateGetItemEnglishTranslationsCommand(), new
                         {
                             ItemId = itemId

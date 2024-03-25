@@ -1,10 +1,9 @@
-﻿using ManagementApi.Helpers;
-using ManagementApi.Models;
-using ManagementApi.Resources;
-using ManagementApi.Services.Interfaces;
-
-namespace ManagementApi.Services
+﻿namespace ManagementApi.Services
 {
+    using Helpers;
+    using Interfaces;
+    using Resources;
+
     public class LotItemSOAPRequestService : ISOAPRequestService
     {
         private readonly IAuctionEventItemService _auctionEventItemService;
@@ -16,20 +15,16 @@ namespace ManagementApi.Services
 
         public async Task<string> CreateSOAPRequest(string? ItemId)
         {
-            const string nameOfInput = nameof(ItemId);
-            AuctionEventItemResponse? response;
+            const string NAME_OF_INPUT = nameof(ItemId);
+            if (!SOAPRequestHelper.IsValidRequestInput(ItemId))
+            {
+                return string.Format(ApiRequests.InvalidInputMsg, NAME_OF_INPUT, ItemId);
+            }
 
-            if (SOAPRequestHelper.IsValidRequestInput(ItemId))
-            {
-                response = await _auctionEventItemService.GetAuctionEventItemDetails(int.Parse(ItemId!));
-            }
-            else
-            {
-                return string.Format(ApiRequests.InvalidInputMsg, nameOfInput, ItemId);
-            }
+            var response = await _auctionEventItemService.GetAuctionEventItemDetails(int.Parse(ItemId!));
 
             return response == null
-                ? string.Format(ApiRequests.NoResponseMsg, nameOfInput, ItemId)
+                ? string.Format(ApiRequests.NoResponseMsg, NAME_OF_INPUT, ItemId)
                 : SOAPRequestHelper.GenerateLotItemSOAPRequest(response);
         }
     }

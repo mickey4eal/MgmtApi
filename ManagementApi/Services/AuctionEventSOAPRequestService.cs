@@ -1,9 +1,8 @@
 ﻿namespace ManagementApi.Services
 {
-    using ManagementApi.Helpers;
-    using ManagementApi.Resources;
-    using ManagementApi.Responses;
-    using ManagementApi.Services.Interfaces;
+    using Helpers;
+    using Interfaces;
+    using Resources;
 
     public class AuctionEventSOAPRequestService : ISOAPRequestService
     {
@@ -16,20 +15,16 @@
 
         public async Task<string> CreateSOAPRequest(string? SaleId)
         {
-            const string nameOfInput = nameof(SaleId);
-            AuctionEventsResponse? response;
+            const string NAME_OF_INPUT = nameof(SaleId);
+            if (!SOAPRequestHelper.IsValidRequestInput(SaleId))
+            {
+                return string.Format(ApiRequests.InvalidInputMsg, NAME_OF_INPUT, SaleId);
+            }
 
-            if (SOAPRequestHelper.IsValidRequestInput(SaleId))
-            {
-                response = await _auctionEventService.GetAuctionEventDetailsRouteTwo(int.Parse(SaleId!));
-            }
-            else
-            {
-                return string.Format(ApiRequests.InvalidInputMsg, nameOfInput, SaleId);
-            }
+            var response = await _auctionEventService.GetAuctionEventDetailsRouteTwo(int.Parse(SaleId!));
 
             return response == null
-                ? string.Format(ApiRequests.NoResponseMsg, nameOfInput, SaleId)
+                ? string.Format(ApiRequests.NoResponseMsg, NAME_OF_INPUT, SaleId)
                 : SOAPRequestHelper.GenerateAuctionEventSOAPRequest(response);
         }
     }
