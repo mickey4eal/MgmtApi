@@ -10,7 +10,7 @@
         public void HasConfirmedExecutionRoute_ReturnsTrueForSaleInput()
         {
             // Arrange
-            string consoleInput = ProgramHelperStrings.S;
+            string consoleInput = Strings.S;
 
             // Act
             bool? result = ProgramHelper.HasConfirmedExecutionRoute(consoleInput);
@@ -23,7 +23,7 @@
         public void HasConfirmedExecutionRoute_ReturnsTrueForSaleInputIgnoreCase()
         {
             // Arrange
-            string consoleInput = ProgramHelperStrings.SALE;
+            string consoleInput = Strings.SALE;
 
             // Act
             bool? result = ProgramHelper.HasConfirmedExecutionRoute(consoleInput);
@@ -36,7 +36,7 @@
         public void HasConfirmedExecutionRoute_ReturnsFalseForLotInput()
         {
             // Arrange
-            string consoleInput = ProgramHelperStrings.L;
+            string consoleInput = Strings.L;
 
             // Act
             bool? result = ProgramHelper.HasConfirmedExecutionRoute(consoleInput);
@@ -75,7 +75,7 @@
         public void ShouldProgramRun_ReturnsFalseForExitInputIgnoreCase()
         {
             // Arrange
-            string consoleInput = ProgramHelperStrings.EXIT;
+            string consoleInput = Strings.EXIT;
 
             // Act
             bool result = ProgramHelper.ShouldProgramRun(consoleInput);
