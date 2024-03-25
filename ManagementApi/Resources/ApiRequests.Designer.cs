@@ -70,7 +70,7 @@ namespace ManagementApi.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} {1} is not valid. Please enter a valid {0}..
+        ///   Looks up a localized string similar to {0} {1} is not valid. Press Enter to restart and try again with a valid {0}..
         /// </summary>
         internal static string InvalidInputMsg {
             get {
@@ -116,7 +116,7 @@ namespace ManagementApi.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to No Response for Request with {0} {1}.
-        ///Please try again with a valid {0}..
+        ///Press Enter to restart and try again with a valid {0}..
         /// </summary>
         internal static string NoResponseMsg {
             get {

@@ -121,7 +121,7 @@
     <value>SOAP Request Generator Started</value>
   </data>
   <data name="InvalidInputMsg" xml:space="preserve">
-    <value>{0} {1} is not valid. Please enter a valid {0}.</value>
+    <value>{0} {1} is not valid. Press Enter to restart and try again with a valid {0}.</value>
     <comment>{0}: name of input
 {1}: input value</comment>
   </data>
@@ -197,7 +197,7 @@
   </data>
   <data name="NoResponseMsg" xml:space="preserve">
     <value>No Response for Request with {0} {1}.
-Please try again with a valid {0}.</value>
+Press Enter to restart and try again with a valid {0}.</value>
     <comment>{0}: name of input
 {1}: input value</comment>
   </data>
